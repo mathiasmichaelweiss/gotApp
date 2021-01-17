@@ -8,7 +8,7 @@ export default class ItemList extends Component {
 
   state = {
     charList: null,
-    randomKey: `f${(~~(Math.random() * 1e8)).toString(16)}`
+    id: `f${(~~(Math.random() * 1e8)).toString(16)}`
   };
 
   componentDidMount() {

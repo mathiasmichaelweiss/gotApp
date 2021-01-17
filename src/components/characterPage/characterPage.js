@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "reactstrap";
 import ItemList from "../itemList";
 import CharDetails from "../charDetails";
-import ErrorMassage from "../errorMessage";
+import ErrorMessage from "../errorMessage";
 
 export default class CharacterPage extends Component {
   state = {
@@ -10,22 +10,21 @@ export default class CharacterPage extends Component {
     error: false
   };
 
-  onCharSelected = id => {
-    // Устанавливает новый  id в selectedChar(поместит id в state.selectedChar)
-    this.setState({
-      selectedChar: id
-    });
-  };
-
-  componentDidCatch() {
+  componenDidCatch() {
     this.setState({
       error: true
     });
   }
 
+  onCharSelected = id => {
+    this.setState({
+      selectedChar: id
+    });
+  };
+
   render() {
     if (this.state.error) {
-      return <ErrorMassage />;
+      return <ErrorMessage />;
     }
 
     return (
@@ -34,7 +33,7 @@ export default class CharacterPage extends Component {
           <ItemList onCharSelected={this.onCharSelected} />
         </Col>
         <Col md="6">
-          <CharDetails charID={this.state.selectedChar} />
+          <CharDetails charId={this.state.selectedChar} />
         </Col>
       </Row>
     );
